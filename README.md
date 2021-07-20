@@ -4,5 +4,4 @@ Um sistema de gestão de tarefas simples feito em java, jpa, jsf, maven. Nele vo
 ### Como rodar o projeto
 Baixe a pasta crud-java-esig ou clone este repositório em sua maquina, importe a pasta crud para a IDE que você utiliza, caso seja o eclipse, entre no site da mvn repository e baixe o lombok, abra o arquivo baixado deixe ele achar eclipse e clique em install/update, depois de instalado clique em quit installer. Para integrar o projeto ao seu banco, vá ao arquivo persistence.xml que está em src/main/resources e substitua os values das tags "property" pelas a do seu banco de dados, por exemplo eu usei o postgreSQL então fica value="org.postgresql.Driver", você pode achar essas configurações do site do banco que você usa, vão ser elas as do driver, url, user e senha, na property que tem "hibernate.dialect" você deve procurar as configurações de acordo com a versão do seu banco, e quando for rodar a primeira vez trocar na property hibernate.hbm2ddl.auto o seu value por create, para que ele crie as tabelas. O server usado foi o tomcat v8.5, voce deve adicionar o projeto a ele para rodar.
 
-<a href="https://pt-br.reactjs.org/">#React</a>
-
+<h1><a href="https://maven.apache.org/index.html">Maven</a></h1>

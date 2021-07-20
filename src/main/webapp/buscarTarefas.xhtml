@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Busca de Tarefas</title>
+	<h:outputScript library="js" name="scriptLocalizacao.js" />
+</h:head>
+
+<h:body>
+	<ui:include src="/menu.xhtml" />
+	<p:panel header="Relatorios de tarefas">
+		<p:messages closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+		<p:panelGrid columns="6">
+			<h:form id="formStatus">
+				<p:outputLabel value="Status: " />
+				<p:selectOneMenu id="OneMenu" value="#{tarefasBean.status}">
+					<f:selectItem itemLabel="Selecione um status" itemDisabled="true" />
+					<f:selectItem itemLabel="Em Andamento" itemValue="false" />
+					<f:selectItem itemLabel="Concluida" itemValue="true" />
+				</p:selectOneMenu>
+				<p:commandButton value="Buscar"
+					actionListener="#{tarefasBean.listarTarefasStatus()}"
+					update=":formTabelaTarefas:tabelaTarefas" />
+			</h:form>
+
+			<h:form>
+				<p:outputLabel value="id: " />
+				<p:inputText value="#{tarefasBean.id}" />
+				<p:commandButton value="Buscar"
+					actionListener="#{tarefasBean.listarTarefasId()}"
+					update=":formTabelaTarefas:tabelaTarefas" />
+			</h:form>
+
+			<h:form>
+				<p:outputLabel value="Titulo: " />
+				<p:inputText value="#{tarefasBean.titulo}" />
+				<p:commandButton value="Buscar"
+					actionListener="#{tarefasBean.listarTarefasTitulo()}"
+					update=":formTabelaTarefas:tabelaTarefas" />
+			</h:form>
+
+			<h:form>
+				<p:outputLabel value="Prioridade: " />
+				<p:selectOneMenu id="OneMenu" value="#{tarefasBean.prioridade}">
+					<f:selectItem itemDisabled="true"
+						itemLabel="Selecione uma prioridade" />
+					<f:selectItem itemLabel="baixa" itemValue="baixa" />
+					<f:selectItem itemLabel="média" itemValue="média" />
+					<f:selectItem itemLabel="alta" itemValue="alta" />
+				</p:selectOneMenu>
+				<p:commandButton value="Buscar"
+					actionListener="#{tarefasBean.listarTarefasPrioriade()}"
+					update=":formTabelaTarefas:tabelaTarefas" />
+			</h:form>
+
+			<h:form>
+				<p:outputLabel value="Responsavel: " />
+				<p:selectOneMenu value="#{tarefasBean.colab}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemDisabled="true"
+						itemLabel="Selecione um funcionario" />
+					<f:selectItems value="#{tarefasBean.colaborador}"
+						var="funcionarioAtual"
+						itemLabel="#{funcionarioAtual.nome}" />
+				</p:selectOneMenu>
+				<p:commandButton value="Buscar"
+					actionListener="#{tarefasBean.listarTarefasColaborador()}"
+					update=":formTabelaTarefas:tabelaTarefas" 
+				/>
+			</h:form>
+		</p:panelGrid>
+
+
+
+		<h:form id="formTabelaTarefas" >
+			<p:dataTable id="tabelaTarefas" value="#{tarefasBean.tlist}"
+				var="tarefaAtual" emptyMessage="Nenhuma tarefa registrada"
+				paginator="true">
+				<p:column headerText="id" width="80"
+					style=" text-align: center;">
+					#{tarefaAtual.id}
+				</p:column>
+
+				<p:column headerText="Titulo">
+					#{tarefaAtual.titulo}
+				</p:column>
+
+				<p:column headerText="Descição">
+					#{tarefaAtual.descricao}
+				</p:column>
+
+				<p:column headerText="Colaborador designado">
+					#{tarefaAtual.responsavel.nome}
+				</p:column>
+
+				<p:column headerText="Prioridade" width="120"
+					style=" text-align: center;">
+					#{tarefaAtual.prioridade}
+				</p:column>
+
+				<p:column headerText="Data" width="100" style=" text-align: center;">
+					<h:outputText value="#{tarefaAtual.data}">
+						<f:convertDateTime type="localDate" pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</p:panel>
+</h:body>
+
+</html>

@@ -10,10 +10,10 @@ Gerenciador de projetos que ajuda o desenvolvedor com o controle e manejamento d
 <h2><a href="https://www.postgresql.org">PostgreSQL</a></h2>
 PostgreSQL é um sistema gerenciador de banco de dados objeto relacional.
 
-<h2><a href="http://tomcat.apache.org">Lombok</a></h2>
+<h2><a href="https://projectlombok.org">Lombok</a></h2>
 Biblioteca que agiliza muitas das implementações que seriam realizadas write less code more
 
-<h2><a href="https://projectlombok.org">TomCat Apache</a></h2>
+<h2><a href="http://tomcat.apache.org">TomCat Apache</a></h2>
 O Tomcat é um servidor Java-Web, que implementa as tecnologias Java Servlet e JavaServer Pages, permitindo assim, que a aplicação esteja disponivel para coneção em Navegador.
 
 <h2><a href="https://www.primefaces.org">PrimeFaces</a></h2>
